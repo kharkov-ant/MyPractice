@@ -1,0 +1,5 @@
+#!/bin/bash
+
+javac ua/nure/kharkov/practice1/Demo.java
+java ua.nure.kharkov.practice1.Demo
+
