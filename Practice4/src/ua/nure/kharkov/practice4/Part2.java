@@ -86,6 +86,7 @@ public class Part2 {
 		while (s1.hasNextLine()) {
 			content1.append("output ==> ").append(s1.nextLine()).append(" ");
 		}
+		s.close();
 		s1.close();
 		System.out.println(content.toString());
 		System.out.println(content1.toString());
