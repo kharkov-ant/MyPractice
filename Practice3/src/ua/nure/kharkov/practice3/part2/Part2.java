@@ -10,6 +10,7 @@ public class Part2 {
         String input = Util.getInput("part2.txt");
         System.out.println(min(input));
         System.out.println(max(input));
+        System.out.println();
     }
     public static String min(String input){
         StringBuilder newstr = new StringBuilder("Min: ");
