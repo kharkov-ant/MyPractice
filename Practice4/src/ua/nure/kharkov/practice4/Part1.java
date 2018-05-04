@@ -1,4 +1,4 @@
-package ua.nure.kharkov.practice4;
+		package ua.nure.kharkov.practice4;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +10,7 @@ public class Part1 {
 	}
 	public static String upper(String input) {
 		StringBuilder newstr = new StringBuilder(input);
-		Pattern p = Pattern.compile("[A-Za-zа-яёА-ЯЁ]{3,}");
+		Pattern p = Pattern.compile("[A-Za-zа-яёА-ЯЁ]{4,}");
 		Matcher m = p.matcher(input);
 		while(m.find()) {																																													
 			newstr.replace(m.start(),m.end(),m.group().toUpperCase());
