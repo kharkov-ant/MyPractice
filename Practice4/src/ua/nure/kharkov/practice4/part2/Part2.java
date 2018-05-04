@@ -1,4 +1,4 @@
-package ua.nure.kharkov.practice4;
+package ua.nure.kharkov.practice4.part2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,7 +23,7 @@ public class Part2 {
 
 	public static void writeFile() throws Exception {
 		StringBuilder newstr = new StringBuilder();
-		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("input.txt"), "UTF-8");
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("part2.txt"), "UTF-8");
 		int[] arr = generate();
 		for (int a : arr) {
 			newstr.append(a).append(" ");
@@ -33,7 +33,7 @@ public class Part2 {
 	}
 
 	public static String readFile() throws FileNotFoundException {
-		Scanner s = new Scanner(new File("input.txt"), "UTF-8");
+		Scanner s = new Scanner(new File("part2.txt"), "UTF-8");
 		StringBuilder content = new StringBuilder();
 		while (s.hasNextLine()) {
 			content.append(s.nextLine());
@@ -44,7 +44,7 @@ public class Part2 {
 
 	public static void sortWriteNumbers() throws Exception {
 		StringBuilder newstr = new StringBuilder();
-		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("output.txt"), "UTF-8");
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("part2_sorted.txt"), "UTF-8");
 		String[] arr = readFile().split(" ");
 		int[] newarr = new int[arr.length];
 		for (int i = 0; i < arr.length; i++) {

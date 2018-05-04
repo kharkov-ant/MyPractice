@@ -1,7 +1,9 @@
-		package ua.nure.kharkov.practice4;
+		package ua.nure.kharkov.practice4.part1;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import ua.nure.kharkov.practice4.Util;
 
 public class Part1 {
 	public static void main(String[] args) {

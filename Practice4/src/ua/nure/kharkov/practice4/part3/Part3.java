@@ -1,10 +1,12 @@
-package ua.nure.kharkov.practice4;
+package ua.nure.kharkov.practice4.part3;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import ua.nure.kharkov.practice4.Util;
 
 public class Part3 {
 	public static void main(String[] args) {
