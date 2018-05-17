@@ -23,7 +23,7 @@ public class Part2 {
 
 	public static void writeFile() throws Exception {
 		StringBuilder newstr = new StringBuilder();
-		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("part2.txt"), "UTF-8");
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("part2.txt"), "Windows-1251");
 		int[] arr = generate();
 		for (int a : arr) {
 			newstr.append(a).append(" ");
@@ -33,7 +33,7 @@ public class Part2 {
 	}
 
 	public static String readFile() throws FileNotFoundException {
-		Scanner s = new Scanner(new File("part2.txt"), "UTF-8");
+		Scanner s = new Scanner(new File("part2.txt"), "Windows-1251");
 		StringBuilder content = new StringBuilder();
 		while (s.hasNextLine()) {
 			content.append(s.nextLine());
@@ -44,7 +44,7 @@ public class Part2 {
 
 	public static void sortWriteNumbers() throws Exception {
 		StringBuilder newstr = new StringBuilder();
-		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("part2_sorted.txt"), "UTF-8");
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("part2_sorted.txt"), "Windows-1251");
 		String[] arr = readFile().split(" ");
 		int[] newarr = new int[arr.length];
 		for (int i = 0; i < arr.length; i++) {
@@ -76,12 +76,12 @@ public class Part2 {
 	}
 
 	public static void toConsole() throws FileNotFoundException {
-		Scanner s = new Scanner(new File("input.txt"), "UTF-8");
+		Scanner s = new Scanner(new File("part2.txt"), "UTF-8");
 		StringBuilder content = new StringBuilder();
 		while (s.hasNextLine()) {
 			content.append("input ==> ").append(s.nextLine()).append(" ");
 		}
-		Scanner s1 = new Scanner(new File("output.txt"), "UTF-8");
+		Scanner s1 = new Scanner(new File("part2_sorted.txt"), "UTF-8");
 		StringBuilder content1 = new StringBuilder();
 		while (s1.hasNextLine()) {
 			content1.append("output ==> ").append(s1.nextLine()).append(" ");

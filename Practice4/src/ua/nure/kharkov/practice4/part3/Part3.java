@@ -26,9 +26,9 @@ public class Part3 {
 	public static String findTypes(String type) {
 		String input = Util.getInput("part3.txt");
 		Map<String, String> REGEX = new HashMap<String, String>();
-		REGEX.put("String", "[A-Za-z–∞-—è—ë–ê-–Ø–Å]{2,}");
+		REGEX.put("String", "[A-Za-z‡-ˇ∏¿-ﬂ®]{2,}");
 		REGEX.put("double", "[-+]?\\d*\\.\\d+");
-		REGEX.put("char", "[A-Za-z–∞-—è—ë–ê-–Ø–Å]+");
+		REGEX.put("char", "[A-Za-z‡-ˇ∏¿-ﬂ®]+");
 		REGEX.put("int", "(?<=\\s|^)\\d+(?=\\s|$)");
 		StringBuilder str = new StringBuilder();
 		if (type.equals("char")) {

@@ -1,1 +1,1 @@
-РќР° РїСЂР°РєС‚РёС‡РµСЃРєРѕРј Р·Р°РЅСЏС‚РёРё РІ РїРµСЂРІСѓСЋ РѕС‡РµСЂРµРґСЊ РїРёСЃР°С‚СЊ С„СѓРЅРєС†РёРѕРЅР°Р» РІСЃРµС… РїРѕРґР·Р°РґР°С‡ Рё РІ СЃР°РјСѓСЋ РїРѕСЃР»РµРґРЅСЋСЋ РѕС‡РµСЂРµРґСЊ С‚РµСЃС‚С‹. On a practical lesson, first of all write functional all subtasks and, at the very least, tests.
+На практическом занятии в первую очередь писать функционал всех подзадач и в самую последнюю очередь тесты. On a practical lesson, first of all write functional all subtasks and, at the very least, tests.

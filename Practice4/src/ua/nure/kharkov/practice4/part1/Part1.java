@@ -12,7 +12,7 @@ public class Part1 {
 	}
 	public static String upper(String input) {
 		StringBuilder newstr = new StringBuilder(input);
-		Pattern p = Pattern.compile("[A-Za-zĞ°-ÑÑ‘Ğ-Ğ¯Ğ]{4,}");
+		Pattern p = Pattern.compile("[A-Za-zà-ÿ¸À-ß¨]{4,}");
 		Matcher m = p.matcher(input);
 		while(m.find()) {																																													
 			newstr.replace(m.start(),m.end(),m.group().toUpperCase());
