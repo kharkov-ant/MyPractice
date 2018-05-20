@@ -51,10 +51,10 @@ public class Demo {
         dbManager.setGroupsForUser(userPetrov, teamA, teamB);
         dbManager.setGroupsForUser(userObama, teamA, teamB, teamC);
          
-//        for (User user : dbManager.findAllUsers()) {
-//            printList(dbManager.getUserGroups(user));
-//            System.out.println("~~~~~");
-//        }
+        for (User user : dbManager.findAllUsers()) {
+            printList(dbManager.getUserGroups(user));
+            System.out.println("~~~~~");
+        }
         // teamA
         // teamA teamB
         // teamA teamB teamC

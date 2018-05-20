@@ -33,7 +33,7 @@ public class DBManager {
 	private static final String SQL_FIND_USER_BY_LOGIN = "SELECT * FROM users WHERE login=?";
 	private static final String SQL_FIND_GROUP_BY_NAME = "SELECT * FROM groups WHERE name=?";
 	private static final String SQL_INSERT_USER_IN_GROUP = "INSERT INTO users_groups VALUES (?, ?)";
-	private static final String SQL_FIND_USER_GROUP = "SELECT * FROM users_groups WHERE user_id=?";
+	private static final String SQL_FIND_USER_GROUP = "SELECT * FROM users_groups WHERE user_id=";
 
 	public List<User> findAllUsers() throws DBException {
 		List<User> users = new ArrayList<>();
@@ -200,6 +200,32 @@ public class DBManager {
 //
 //		return users;
 //	}
+	private List<String> getGroupForId(int id) throws DBException {
+
+		List<String> groups = new ArrayList<>();
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = getConnection();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(SQL_FIND_USER_GROUP+id);
+
+			while (rs.next()) {
+				groups.add(rs.getInt(""));
+			}
+		} catch (SQLException ex) {
+			throw new DBException("Cannot find all users", ex);
+		} finally {
+			close(rs);
+			close(stmt);
+			close(con);
+		}
+
+		return groups;
+	}
 	
 	public void setGroupsForUser(User user, Group group) throws SQLException {
 		insertUserIntoGroup(user, group);
