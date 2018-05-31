@@ -1,10 +1,13 @@
 package ua.nure.kharkov.practice5.part1;
 
 public class Part1 {
-	public static void main(String[] args) {
-		new FirstThread().start();
-		new Thread(new SecondThread()).start();
-		;
+	public static void main(String[] args) throws InterruptedException {
+		Thread t1 = new FirstThread();
+        t1.start();
+        t1.join();
+        Thread t = new Thread(new SecondThread());
+        t.start();
+        
 	}
 }
 
