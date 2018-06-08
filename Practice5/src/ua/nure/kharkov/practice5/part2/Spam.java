@@ -38,5 +38,6 @@ public class Spam {
 				s.stop();
 			}
 		}
+		scanner.close();
 	}
 }
