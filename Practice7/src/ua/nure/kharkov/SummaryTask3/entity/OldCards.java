@@ -6,7 +6,7 @@ import java.util.List;
 public class OldCards {
 	private List<OldCard> oldcards;
 
-	public List<OldCard> getQuestions() {
+	public List<OldCard> getOldCards() {
 		if (oldcards == null) {
 			oldcards = new ArrayList<OldCard>();
 		}

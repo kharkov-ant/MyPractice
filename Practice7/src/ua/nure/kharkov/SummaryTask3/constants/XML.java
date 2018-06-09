@@ -2,7 +2,7 @@ package ua.nure.kharkov.SummaryTask3.constants;
 
 public enum XML {
 	// elements names
-			OLDCARDS("OldCards"), OLDCARD("OldCard"), THEMA("Thema"), AUTHOR("Author"),
+			OLDCARDS("OldCards"), OLDCARD("OldCard"),VALUABLE("Valuable"),YEAR("Year"), COUNTRY("Country"),THEMA("Thema"),TYPE("Type"), AUTHOR("Author"),
 
 			// attribute name
 			SEND("Send");

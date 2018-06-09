@@ -11,7 +11,7 @@ public class Main {
 		System.out.println("java ua.nure.your_last_name.SummaryTask3.Main xmlFileName");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
 			usage();
 			return;
@@ -29,12 +29,12 @@ public class Main {
 		domController.parse(true);
 		OldCards oldcards = domController.getOldCards();
 
-		// sort (case 1)
-		Sorter.sortQuestionsByQuestionText(test);
-		
+//		// sort (case 1)
+//		Sorter.sortQuestionsByQuestionText(test);
+//		
 		// save
 		String outputXmlFile = "output.dom.xml";
-		DOMController.saveToXML(test, outputXmlFile);
+		DOMController.saveToXML(oldcards, outputXmlFile);
 		System.out.println("Output ==> " + outputXmlFile);
 	}
 }
