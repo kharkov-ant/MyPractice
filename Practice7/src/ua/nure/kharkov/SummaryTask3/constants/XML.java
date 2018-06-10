@@ -5,7 +5,7 @@ public enum XML {
 			OLDCARDS("OldCards"), OLDCARD("OldCard"),VALUABLE("Valuable"),YEAR("Year"), COUNTRY("Country"),THEMA("Thema"),TYPE("Type"), AUTHOR("Author"),
 
 			// attribute name
-			SEND("Send");
+			SEND("send");
 
 			private String value;
 

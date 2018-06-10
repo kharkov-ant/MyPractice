@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OldCards>
+<OldCard>
+<Thema>Nature</Thema>
+<Type send="true">Normal</Type>
+<Country>Ukraine</Country>
+<Year>2001</Year>
+<Author>Ivan Beda</Author>
+<Author>Anton Bobov</Author>
+<Valuable>Thematic</Valuable>
+</OldCard>
+<OldCard>
+<Thema>People</Thema>
+<Type>Normal</Type>
+<Country>China</Country>
+<Year>1968</Year>
+<Valuable>Historical</Valuable>
+</OldCard>
+<OldCard>
+<Thema>Sport</Thema>
+<Type>Advertising</Type>
+<Country>USA</Country>
+<Year>2010</Year>
+<Author>James Onil</Author>
+<Valuable>Thematic</Valuable>
+</OldCard>
+</OldCards>

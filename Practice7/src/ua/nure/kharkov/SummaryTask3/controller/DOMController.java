@@ -30,7 +30,6 @@ public class DOMController {
 
 	private String xmlFileName;
 
-	// main container
 	private OldCards oldcards;
 
 	public DOMController(String xmlFileName) {
@@ -41,12 +40,6 @@ public class DOMController {
 		return oldcards;
 	}
 
-	/**
-	 * Parses XML document.
-	 * 
-	 * @param validate
-	 *            If true validate XML document against its XML schema.
-	 */
 	public void parse(boolean validate) throws ParserConfigurationException, SAXException, IOException {
 
 		// obtain DOM parser
@@ -77,22 +70,16 @@ public class DOMController {
 			}
 		});
 
-		// parse XML document
 		Document document = db.parse(xmlFileName);
 
-		// get root element
 		Element root = document.getDocumentElement();
 
-		// create container
 		oldcards = new OldCards();
 
-		// obtain questions nodes
 		NodeList oldcardNodes = root.getElementsByTagName(XML.OLDCARD.value());
 
-		// process questions nodes
 		for (int j = 0; j < oldcardNodes.getLength(); j++) {
 			OldCard oldcard = getOldCard(oldcardNodes.item(j));
-			// add question to container
 			oldcards.getOldCards().add(oldcard);
 		}
 	}
@@ -105,32 +92,31 @@ public class DOMController {
 		Node otNode = oElement.getElementsByTagName(XML.THEMA.value()).item(0);
 		oldcard.setThema(otNode.getTextContent());
 
-		// process oldcard tyma
+		// process oldcard type
 		Node otypeNode = oElement.getElementsByTagName(XML.TYPE.value()).item(0);
 		oldcard.setType(otypeNode.getTextContent());
+
+		Element otElement = (Element) otypeNode;
+		String send = otElement.getAttribute(XML.SEND.value());
+		oldcard.setSend(Boolean.valueOf(send));
 
 		// process oldcard country
 		Node ocNode = oElement.getElementsByTagName(XML.COUNTRY.value()).item(0);
 		oldcard.setCountry(ocNode.getTextContent());
 
-		// process oldcard valuabe
-		Node ovNode = oElement.getElementsByTagName(XML.VALUABLE.value()).item(0);
-		oldcard.setValuable(ovNode.getTextContent());
-
-		String send = oElement.getAttribute(XML.SEND.value());
-		oldcard.setSend(Boolean.valueOf(send));
-
-		String year = oElement.getAttribute(XML.YEAR.value());
-		oldcard.setYear(Integer.parseInt(year));
+		Node yearNode = oElement.getElementsByTagName(XML.YEAR.value()).item(0);
+		oldcard.setYear(Integer.valueOf(yearNode.getTextContent()));
 
 		// process authors
 		NodeList aNodeList = oElement.getElementsByTagName(XML.AUTHOR.value());
 		for (int j = 0; j < aNodeList.getLength(); j++) {
 			Author author = getAuthor(aNodeList.item(j));
-
-			// add answer
 			oldcard.getAuthors().add(author);
 		}
+
+		// process oldcard valuabe
+		Node ovNode = oElement.getElementsByTagName(XML.VALUABLE.value()).item(0);
+		oldcard.setValuable(ovNode.getTextContent());
 
 		return oldcard;
 	}
@@ -138,11 +124,8 @@ public class DOMController {
 	private Author getAuthor(Node aNode) {
 		Author author = new Author();
 		Element aElement = (Element) aNode;
-
-		// process author name
-		Node auNode = aElement.getElementsByTagName(XML.AUTHOR.value()).item(0);
-		author.setName(auNode.getTextContent());
-
+		String content = aElement.getTextContent();
+		author.setName(content);
 		return author;
 	}
 
@@ -150,13 +133,6 @@ public class DOMController {
 	// Static util methods
 	// //////////////////////////////////////////////////////
 
-	/**
-	 * Creates and returns DOM of the Test container.
-	 * 
-	 * @param test
-	 *            Test object.
-	 * @throws ParserConfigurationException
-	 */
 	public static Document getDocument(OldCards oldcards) throws ParserConfigurationException {
 
 		// obtain DOM parser
@@ -182,64 +158,46 @@ public class DOMController {
 			Element ooElement = document.createElement(XML.OLDCARD.value());
 			oElement.appendChild(ooElement);
 
-//			// process oldcard thema
-//			Node otNode = oElement.getElementsByTagName(XML.THEMA.value()).item(0);
-//			oldcard.setThema(otNode.getTextContent());
-//
-//			// process oldcard tyma
-//			Node otypeNode = oElement.getElementsByTagName(XML.TYPE.value()).item(0);
-//			oldcard.setType(otypeNode.getTextContent());
-//
-//			// process oldcard country
-//			Node ocNode = oElement.getElementsByTagName(XML.COUNTRY.value()).item(0);
-//			oldcard.setCountry(ocNode.getTextContent());
-//
-//			// process oldcard valuabe
-//			Node ovNode = oElement.getElementsByTagName(XML.VALUABLE.value()).item(0);
-//			oldcard.setValuable(ovNode.getTextContent());
-//
-//			String send = oElement.getAttribute(XML.SEND.value());
-//			oldcard.setSend(Boolean.valueOf(send));
-//
-//			String year = oElement.getAttribute(XML.YEAR.value());
-//			oldcard.setYear(Integer.parseInt(year));
-			
-			// add question text
 			Element thElement = document.createElement(XML.THEMA.value());
 			thElement.setTextContent(oldcard.getThema());
-			oElement.appendChild(thElement);
+			ooElement.appendChild(thElement);
 
 			Element tyElement = document.createElement(XML.TYPE.value());
 			tyElement.setTextContent(oldcard.getType());
-			oElement.appendChild(tyElement);
+			ooElement.appendChild(tyElement);
 			
+			if (oldcard.isSend()) {
+				tyElement.setAttribute(XML.SEND.value(), "true");
+			}
+
 			Element coElement = document.createElement(XML.COUNTRY.value());
 			coElement.setTextContent(oldcard.getCountry());
-			oElement.appendChild(coElement);
+			ooElement.appendChild(coElement);
 			
-			// add answers
-//			for (Answer answer : question.getAnswers()) {
-//				Element aElement = document.createElement(XML.ANSWER.value());
-//				aElement.setTextContent(answer.getContent());
-//
-//				// set attribute
-//				if (answer.isCorrect()) {
-//					aElement.setAttribute(XML.CORRECT.value(), "true");
-//				}
-//				qElement.appendChild(aElement);
-//			}
+			Element yearElement = document.createElement(XML.YEAR.value());
+			yearElement.setTextContent(String.valueOf(oldcard.getYear()));
+			ooElement.appendChild(yearElement);
+			
+			for (Author author : oldcard.getAuthors()) {
+				Element aElement = document.createElement(XML.AUTHOR.value());
+				aElement.setTextContent(author.getName());
+				
+				ooElement.appendChild(aElement);
+			}
+			
+			Element valElement = document.createElement(XML.VALUABLE.value());
+			valElement.setTextContent(oldcard.getValuable());
+			ooElement.appendChild(valElement);
 		}
 
 		return document;
 	}
-
 
 	public static void saveToXML(OldCards oldcards, String xmlFileName)
 			throws ParserConfigurationException, TransformerException {
 		// Test -> DOM -> XML
 		saveToXML(getDocument(oldcards), xmlFileName);
 	}
-
 
 	public static void saveToXML(Document document, String xmlFileName) throws TransformerException {
 
@@ -254,30 +212,4 @@ public class DOMController {
 		t.transform(new DOMSource(document), result);
 	}
 
-	public static void main(String[] args) throws Exception {
-
-		// try to parse NOT valid XML document with validation on (failed)
-		DOMController domContr = new DOMController(Constants.INVALID_XML_FILE);
-		try {
-			// parse with validation (failed)
-			domContr.parse(true);
-		} catch (SAXException ex) {
-			System.err.println("====================================");
-			System.err.println("XML not valid");
-			System.err.println("Test object --> " + domContr.getOldCards());
-			System.err.println("====================================");
-		}
-
-		// try to parse NOT valid XML document with validation off (success)
-		domContr.parse(false);
-
-		// we have Test object at this point:
-		System.out.println("====================================");
-		System.out.print("Here is the test: \n" + domContr.getOldCards());
-		System.out.println("====================================");
-
-		// save test in XML file
-		OldCards oldcards = domContr.getOldCards();
-		DOMController.saveToXML(oldcards, Constants.INVALID_XML_FILE + ".dom-result.xml");
-	}
 }
